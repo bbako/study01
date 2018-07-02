@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="org.bbako.mapper.BoardMapper" >
+	
+	<insert id="create" parameterType="BoardVO">
+		insert into board(BNO, TITLE, CONTENT , WRITER  ) values(seq_bno.nextval, #{title}, #{content} , #{writer})
+	</insert>
+	
+	<select id="readAll" resultType="BoardVo">
+		select * from board
+	</select>
+	
+	<select id="read" parameterType="BoardVO" >
+		select * from board where bno = #{bno}
+	</select>
+	
+	<update id="update" parameterType="BoardVO">
+		update board set TITLE = #{title}, CONTENT = #{content} , WRITER = #{writer} where bno = #{bno}
+	</update>
+	
+	<delete id="delete" parameterType="BoardVO">
+		delete from board where bno = #{bno}
+	</delete> 
+ 
+</mapper>
+
